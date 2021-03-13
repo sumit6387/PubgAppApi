@@ -267,46 +267,6 @@
     @endforeach
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Bhaukaal Membership</h2>
-          <p>Become our premium member by taking membership of just rupees 199rs for 1 month. And get premium membership following features.</p>
-        </div>
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-6 box" data-aos="fade-right">
-            <h3>Free</h3>
-            <h4>0 Rs<span>per month</span></h4>
-            <ul>
-              <li><i class="bx bx-check"></i> 5% commision</li>
-              <li><i class="bx bx-check"></i> No Entry in Whatsapp Group</li>
-              <li><i class="bx bx-check"></i> Create only 1 tournament at a time</li>
-              <li><i class="bx bx-check"></i> No promotion of your tournament from our side</li>
-            </ul>
-            <a href="#" class="get-started-btn">Get Started</a>
-          </div>
-
-          <div class="col-lg-6 box" data-aos="fade-left">
-            <h3>Bhaukaal Membership</h3>
-            <h4>199 Rs<span>per month</span></h4>
-            <ul>
-              <li><i class="bx bx-check"></i>0% commision</li>
-              <li><i class="bx bx-check"></i> Premium Whatsapp Group</li>
-              <li><i class="bx bx-check"></i> Create Unlimited Tournament</li>
-              <li><i class="bx bx-check"></i> Free promotion of your tournament</li>
-            </ul>
-            <a href="#" class="get-started-btn">Get Started</a>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
-
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
       <div class="container">
