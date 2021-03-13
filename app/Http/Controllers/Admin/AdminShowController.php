@@ -16,7 +16,7 @@ class AdminShowController extends Controller
         $completedTournament = Tournament::where('completed',1)->get()->count();
         $canceledTournament = Tournament::where('cancel',1)->get()->count();
         $totalUsers = User::get()->count();
-        $totalTransaction = 10;
+        $totalTransaction = Transaction::where('razorpay_id',"!=",null)->where('payment_done',1)->get()->count();
         $users = User::orderby('id','desc')->take(5)->get();
         $data = array('completedTournament' => $completedTournament , 'canceledTournament' =>$canceledTournament , 'totalUsers' => $totalUsers , 'totalTransaction' => $totalTransaction , 'users' => $users);
         return response()->json([
