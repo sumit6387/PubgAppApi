@@ -2,6 +2,8 @@
 namespace App\Functions;
 use App\Models\User;
 use App\Models\Transaction;
+use App\Models\Notification;
+use App\Models\Tournament;
 use Illuminate\Support\Str;
 use Exception;
 
@@ -83,20 +85,25 @@ class AllFunction{
                  $transaction->payment_done = 1;
                  $transaction->save();
           }
-         $users->save();
-         if($kill > 0){
-             if($data){
+             if($users->save()){
                  return true;
              }else{
                  return false;
              }
-     }
  }
 
-
-
-
-
+ public function sendNotification($data){
+    $notification =new Notification();
+    $notification->user_id = $data['id'];
+    $notification->title = $data['title'];
+    $notification->message = $data['msg'];
+    $notification->icon = $data['icon'];
+    if($notification->save()){
+        return true;
+    }else{
+        return false;
+    } 
+}
 
 }
 

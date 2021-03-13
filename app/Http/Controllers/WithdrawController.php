@@ -61,7 +61,7 @@ class WithdrawController extends Controller
             }else if(strtoupper($request->mode) == 'PAYTM'){
                 $valid = Validator::make($request->all(),['paytm_no'=>'required|numeric','mode'=>'required']);
                 if($valid->passes()){
-                        $userinfo = User::where('user',auth()->user()->id)->get()->first();
+                        $userinfo = User::where('id',auth()->user()->id)->get()->first();
                         if($userinfo->withdrawal_amount < 50){
                             return response()->json([
                                 'status' => false,
@@ -103,7 +103,7 @@ class WithdrawController extends Controller
             }else if(strtoupper($request->mode) == 'BANK'){
                 $valid = Validator::make($request->all(),['acount_no'=>'required|numeric','ifsc_code'=>'required','mode'=>'required','bank' => 'required']);
                 if($valid->passes()){
-                        $userinfo = User::where('user_id',auth()->user()->id)->get()->first();
+                        $userinfo = User::where('id',auth()->user()->id)->get()->first();
                         if($userinfo->withdrawal_amount < 50){
                             return response()->json([
                                 'status' => false,
@@ -162,6 +162,8 @@ class WithdrawController extends Controller
         $withdraw = Withdraw::where('id',$id)->get()->first();
         if($withdraw){
             $withdraw->completed = 1;
+            $notifi = new AllFunction();
+            $notifi->sendNotification(array('id' => $withdraw->user_id , 'title' => "Money Added" , "msg" => $withdraw->amount." Added To Your Account.",'icon' => "money"));
             if($withdraw->save()){
                 return response()->json([
                     'status' => true,

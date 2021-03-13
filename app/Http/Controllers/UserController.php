@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use App\Models\UserName;
 use App\Models\History;
 use App\Models\Feedback;
+use App\Functions\AllFunction;
 use Illuminate\Support\Str;
 use Exception;
 use Validator;
@@ -25,6 +26,7 @@ class UserController extends Controller
         try{
             // user join tournament
             $tournament = Tournament::where('tournament_id',$request->tournament_id)->get()->first();
+            $notifi = new AllFunction();
             $arr = explode(',',$tournament->joined_user);
             if(sizeof($arr) == $tournament->max_user_participated){
                 return response()->json([
@@ -76,8 +78,7 @@ class UserController extends Controller
             $history->tournament_id = $request->tournament_id;
             $history->status = 'live';
             $history->save();
-
-
+            $resp = $notifi->sendNotification(array("id" => auth()->user()->id , 'title' => "Join Tournament" , "msg" => "You Joined The ".$tournament->tournament_name." Tournament.",'icon'=> 'gamepad'));
             return response()->json([
                 'status' => true,
                 'msg' => 'You Joined The Tournament'

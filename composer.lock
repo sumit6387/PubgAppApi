@@ -4,8 +4,64 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6128f1a3cc6e5422eb03cef34db778ca",
+    "content-hash": "4f3226a5d635aff9df08bbbcd1205b92",
     "packages": [
+        {
+            "name": "anandsiddharth/laravel-paytm-wallet",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anandsiddharth/laravel-paytm-wallet.git",
+                "reference": "5342add0719e9c5ca94fdd13f766e6a810f2ef45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anandsiddharth/laravel-paytm-wallet/zipball/5342add0719e9c5ca94fdd13f766e6a810f2ef45",
+                "reference": "5342add0719e9c5ca94fdd13f766e6a810f2ef45",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": ">=8.0",
+                "illuminate/support": ">=8.0",
+                "php": ">=7.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anand\\LaravelPaytmWallet\\PaytmWalletServiceProvider"
+                    ],
+                    "aliases": {
+                        "PaytmWallet": "Anand\\LaravelPaytmWallet\\Facades\\PaytmWallet"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anand\\LaravelPaytmWallet\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anand Siddharth",
+                    "email": "anandsiddharth21@gmail.com"
+                }
+            ],
+            "description": "Integrate paytm wallet easily with this package. This package uses official Paytm PHP SDK's",
+            "keywords": [
+                "laravel",
+                "paytm wallet"
+            ],
+            "support": {
+                "issues": "https://github.com/anandsiddharth/laravel-paytm-wallet/issues",
+                "source": "https://github.com/anandsiddharth/laravel-paytm-wallet/tree/v2.0.0"
+            },
+            "time": "2020-10-28T06:22:20+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",
@@ -1753,6 +1809,56 @@
                 "source": "https://github.com/opis/closure/tree/3.6.1"
             },
             "time": "2020-11-07T02:01:34+00:00"
+        },
+        {
+            "name": "paytm/paytmchecksum",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paytm/Paytm_PHP_Checksum.git",
+                "reference": "a032d3cbeb3846720c2c606b9f3c8057c355042e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paytm/Paytm_PHP_Checksum/zipball/a032d3cbeb3846720c2c606b9f3c8057c355042e",
+                "reference": "a032d3cbeb3846720c2c606b9f3c8057c355042e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "paytm\\paytmchecksum\\": "paytmchecksum/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Soumya Vats",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is for paytm checksum creation and verification in PHP",
+            "homepage": "https://developer.paytm.com/docs/checksum/#php",
+            "keywords": [
+                "Paytm PHP",
+                "Paytm checksum",
+                "Paytm payment",
+                "Paytm signature",
+                "checksum",
+                "paytm",
+                "signature"
+            ],
+            "support": {
+                "issues": "https://github.com/paytm/Paytm_PHP_Checksum/issues",
+                "source": "https://github.com/paytm/Paytm_PHP_Checksum/tree/v1.1.0"
+            },
+            "time": "2020-11-11T13:42:29+00:00"
         },
         {
             "name": "phpoption/phpoption",

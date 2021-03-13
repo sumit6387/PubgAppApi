@@ -22,6 +22,9 @@ Route::group(["middleware" => 'auth:sanctum','api'],function(){
     Route::post('/tournamentDetail' , [ShowController::class , 'tournamentDetail']); //tournament_id
     Route::get('/usernames/{id}' , [ShowController::class , 'showUsername']); //tournament_id
     Route::get('/history/{type}',[ShowController::class , 'history']);//game,type ex live, past
+    Route::get('/numberOfNotification' , [ShowController::class , 'numberOfNotification']);
+    Route::get('/notifications' , [ShowController::class , 'notification']);
+    Route::get('/updateSeen' , [ShowController::class , 'updateSeen']);
 });
 
 Route::fallback(function(){

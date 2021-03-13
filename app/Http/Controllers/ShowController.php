@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tournament;
 use App\Models\Transaction;
 use App\Models\UserName;
+use App\Models\Notification;
 use App\Models\User;
 
 class ShowController extends Controller
@@ -130,6 +131,49 @@ class ShowController extends Controller
             return response()->json([
                 'status' => false,
                 'data' => 'You have no history'
+            ]);
+        }
+    }
+
+    public function numberOfNotification(){
+        $no_of_notification = Notification::where(['user_id' => auth()->user()->id , 'seen' => 0])->get()->count();
+        if($no_of_notification){
+            return response()->json([
+                'status' => true,
+                'data' => $no_of_notification
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'data' => 0
+            ]);
+        }
+    }
+
+    public function notification(){
+        $notifications  = Notification::orderby('id','desc')->where('user_id',auth()->user()->id);
+        if($notifications->get()->count()){
+            return response()->json([
+                'status'=> true,
+                'data' => $notifications->paginate(10)
+            ]);
+        }else{
+            return response()->json([
+                'status'=> false,
+                'data' => 'You have no notification'
+            ]);
+        }
+    }
+
+    public function updateSeen(){
+        $notifi = Notification::where('user_id',auth()->user()->id)->update(['seen' => 1]);
+        if($notifi){
+            return response()->json([
+                'status' => true
+            ]);
+        }else{
+            return response()->json([
+                'status' => false
             ]);
         }
     }
