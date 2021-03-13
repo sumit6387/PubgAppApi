@@ -43,7 +43,7 @@
     <div class="container d-flex align-items-center">
 
       <div class="logo mr-auto">
-        <h1 class="text-light"><a href="{{url('/')}}">Funlegends</a></h1>
+        <h1 class="text-light"><a href="{{url('/')}}">R-Stars</a></h1>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
@@ -88,7 +88,7 @@
 
         <div class="section-title">
           <h2>App Features</h2>
-          <p>Funlegend is a skill based gaming plateform where you can compete with thousand of pro players and earn money online.You can organize your tournament and allow your friends to play with you.Funlegend provide user friendly UI and smooth running.</p>
+          <p>R-Star is a skill based gaming plateform where you can compete with thousand of pro players and earn money online.You can organize your tournament and allow your friends to play with you.R-Star provide user friendly UI and smooth running.</p>
         </div>
 
         <div class="row no-gutters">
@@ -167,10 +167,10 @@
           <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
             <h3>My Tournament And Reward</h3>
             <p class="font-italic">
-              Creating your own tournament is a core feature of Funlegend.Before this user have to develop their own app for creating tournament and earn money.But Funlegend provide a free plateform to organize tournaments and earn money.If you are not a Bhaukaal Member Then we Take Only 5% from your totla collection and if you are a member then no commition is to be charged and you can create multiple tournament.
+              Creating your own tournament is a core feature of R-Star.Before this user have to develop their own app for creating tournament and earn money.But R-Star provide a free plateform to organize tournaments and earn money.If you are not a Bhaukaal Member Then we Take Only 5% from your totla collection and if you are a member then no commition is to be charged and you can create multiple tournament.
             </p>
             <p>
-              You can earn with rewards also by claiming your points and the points you will earn are just by following the rules of point table.Funlegends is an app which allow you to earn from all the four ways by doing multiple things. 
+              You can earn with rewards also by claiming your points and the points you will earn are just by following the rules of point table.R-Stars is an app which allow you to earn from all the four ways by doing multiple things. 
             </p>
           </div>
         </div>
@@ -182,8 +182,8 @@
           <div class="col-md-8 pt-5" data-aos="fade-up">
             <h3>Terms And Conditions</h3>
             <p>
-            The terms "We" / "Us" / "Our"/ "Company" individually and collectively refer to Funlegend App.and the terms "Visitor" "User" refer to the users.
-            This page states the Terms and Conditions under which you (Visitor) may visit this website (funlegends.in.com) & App (Funlegends). Please read this page carefully. If you do not accept the Terms and Conditions stated here, we would request you to exit this site & app. The business, any of its business divisions and / or its subsidiaries, associate companies or subsidiaries to subsidiaries or such other investment companies (in India or abroad) reserve their respective rights to revise these Terms and Conditions at any time by updating this posting. You should visit this page periodically to re-appraise yourself of the Terms and Conditions, because they are binding on all users of this Website & app.
+            The terms "We" / "Us" / "Our"/ "Company" individually and collectively refer to R-Star App.and the terms "Visitor" "User" refer to the users.
+            This page states the Terms and Conditions under which you (Visitor) may visit this website (R-Stars.in.com) & App (R-Stars). Please read this page carefully. If you do not accept the Terms and Conditions stated here, we would request you to exit this site & app. The business, any of its business divisions and / or its subsidiaries, associate companies or subsidiaries to subsidiaries or such other investment companies (in India or abroad) reserve their respective rights to revise these Terms and Conditions at any time by updating this posting. You should visit this page periodically to re-appraise yourself of the Terms and Conditions, because they are binding on all users of this Website & app.
             </p>
             <p>
             All logos, brands, marks headings, labels, names, signatures, numerals, shapes or any combinations thereof, appearing in this site, except as otherwise noted, are properties either owned, or used under license, by the business and / or its associate entities who feature on this Website. The use of these properties or any other content on this site, except as provided in these terms and conditions or in the site content, is strictly prohibited.
@@ -199,12 +199,12 @@
           <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
             <h3>About us</h3>
             <p>
-            'Funlegends'  Funlegend is a skill based gaming platform where a youth can show their  skills in gaming and earn some rewards and real money and also earn some fame in between of crores of competitors. And with Funlegend we try to build a global gaming community. We are providing a platform where a youth  can earn some money without going anywhere just by using their skills  . Our app will become a platform where any one can perform without any favoritism, corruption and Glitch. Our app will also help people as Financial supporter because if you are good player than others, you will definitely win and winning means INR. So we are trying to create a global gaming community which will help gamers and boost their skills. We are here with a vision to make every  gamer skilled and and we want that every gamer and youth can sustain their life easily  without going anywhere with the skills that they have.
+            'R-Stars'  R-Star is a skill based gaming platform where a youth can show their  skills in gaming and earn some rewards and real money and also earn some fame in between of crores of competitors. And with R-Star we try to build a global gaming community. We are providing a platform where a youth  can earn some money without going anywhere just by using their skills  . Our app will become a platform where any one can perform without any favoritism, corruption and Glitch. Our app will also help people as Financial supporter because if you are good player than others, you will definitely win and winning means INR. So we are trying to create a global gaming community which will help gamers and boost their skills. We are here with a vision to make every  gamer skilled and and we want that every gamer and youth can sustain their life easily  without going anywhere with the skills that they have.
             </p>
             <ul>
               <li><i class="icofont-check"></i>We are also providing rewards to our daily active users. Who can earn by just completeing simple task.</li>
-              <li><i class="icofont-check"></i> Vision of Funlegend is to create a great gamers community and bang them up to earn in crores.</li>
-              <li><i class="icofont-check"></i>The user created tournament are very secured and run under the guidence of Funlegend Team.</li>
+              <li><i class="icofont-check"></i> Vision of R-Star is to create a great gamers community and bang them up to earn in crores.</li>
+              <li><i class="icofont-check"></i>The user created tournament are very secured and run under the guidence of R-Star Team.</li>
             </ul>
           </div>
         </div>
@@ -347,7 +347,7 @@
               <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="200">
                 <i class="bx bx-envelope"></i>
                 <h4>Email Us</h4>
-                <p>team@funlegends.in</p>
+                <p>team@R-Stars.in</p>
               </div>
               <div class="col-lg-6 info" data-aos="fade-up" data-aos-delay="300">
                 <i class="bx bx-time-five"></i>
@@ -416,13 +416,13 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact" data-aos="fade-up">
-            <h3>Funlegend</h3>
+            <h3>R-Star</h3>
             <p>
               Dev Bhoomi Group Of Institute <br>
               Navgaon Dehradun<br>
               Uttrakhand , 248007 <br><br>
               <strong>Phone:</strong> +91 6387577904<br>
-              <strong>Email:</strong> sumitkr@funlegends.in<br>
+              <strong>Email:</strong> sumitkr@R-Stars.in<br>
             </p>
           </div>
 
@@ -465,7 +465,7 @@
     </div>
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Funlegends</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>R-Stars</span></strong>. All Rights Reserved
       </div>
       
     </div>

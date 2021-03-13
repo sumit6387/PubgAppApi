@@ -16,5 +16,9 @@ use App\Http\Controllers\WebController;
 */
 
 Route::get('/', [WebController::class , 'index']);
-Route::get('/order',[PaymentController::class , 'order']);
+Route::get('/order',[PaymentController::class , 'order']); //user_id , amount,mobile_no
+Route::get('/success',[WebController::class , 'success']);
+Route::view('/error','error');
 Route::post('/payment/status',[PaymentController::class , 'paymentCallback']);
+Route::post('/contact' , [WebController::class , 'contact']);
+Route::post('/newsletter' , [WebController::class , "newsletter"]);

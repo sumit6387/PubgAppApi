@@ -8,41 +8,18 @@ use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use PaytmWallet;
-use paytm\checksum\PaytmChecksumLibrary;
+use Illuminate\Support\Facades\Redirect;
+// use paytm\paytmchecksum\PaytmChecksum;
 use Validator;
 
 class PaymentController extends Controller
 {
-//     public function order(){
-//       $mid = env('PAYTM_MERCHANT_ID');
-//       $order = rand(00000,99999);
-//       $body = '{"mid":"","orderId":"'.$order.'"}';
-
-// /**
-// * Generate checksum by parameters we have in body
-// * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-// */
-//         $paytmChecksum = PaytmChecksum::generateSignature($body, 'YOUR_MERCHANT_KEY');  
-//         return sprintf("generateSignature Returns: %s\n", $paytmChecksum);
-//     }
-
-
-
-
-
-
-
-
-
-
     public function order(Request $request) {
-      $valid = Validator::make($request->all(),["amount" => "required",]);
-      if($valid->passes()){
         $order_id = Str::random(10);
         $transaction = new Transaction();
-        $transaction->user_id = auth()->user()->id;
+        $transaction->user_id = 1;
         $transaction->reciept_id = Str::random(12);
-        $transaction->amount = $request->amount;
+        $transaction->amount = 20;
         $transaction->description = "Adding Money To Your Account.";
         $transaction->payment_id = $order_id;
         $transaction->action = "C";
@@ -50,59 +27,81 @@ class PaymentController extends Controller
         $payment = PaytmWallet::with('receive');
         $payment->prepare([
           'order' => $order_id, // your order id taken from cart
-          'user' =>auth()->user()->id, // your user id
-          'mobile_number' => auth()->user()->mobile_no, // your customer mobile no
+          'user' =>$request->user_id, // your user id
+          'mobile_number' => $request->mobile_no, // your customer mobile no
           'email' => 'utkarshyadav6387@gmail.com', // your user email address
           'amount' => $request->amount, // amount will be paid in INR.
           'callback_url' => url('/payment/status') // callback URL
         ]);
-        $output = array("CHECKSUMHASH"=> $payment->receive()['checkSum'] , 'REQUEST_TYPE'=>$payment->receive()['params']['REQUEST_TYPE'] , "MID" => $payment->receive()['params']['MID'] , "ORDER_ID"=>$payment->receive()['params']['ORDER_ID'],"CUST_ID"=>$payment->receive()['params']['CUST_ID'],"INDUSTRY_TYPE_ID"=>$payment->receive()['params']['INDUSTRY_TYPE_ID'],"CHANNEL_ID"=>$payment->receive()['params']['CHANNEL_ID'],"TXN_AMOUNT"=>$payment->receive()['params']['TXN_AMOUNT'],"WEBSITE"=>$payment->receive()['params']['WEBSITE'],"CALLBACK_URL"=>$payment->receive()['params']['CALLBACK_URL'],"MOBILE_NO"=>$payment->receive()['params']['MOBILE_NO'],"EMAIL"=>$payment->receive()['params']['EMAIL'],"CHECKSUMHASH"=>$payment->receive()['checkSum']);
-        return response()->json([
-          'status' => true,
-          'data' => $output
-          ]);
-          }else{
-            return response()->json([
-              'status' => false,
-              'msg' => $valid->errors()->all() 
-            ]);
-          }
-    }
+        return $payment->receive();
+  }
 
 
     public function paymentCallback(Request $request)    //check status and update in database
     {   
-     $url = 'https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction';
-     
-     $response = Http::post($url, [
-          "Mid" => $request->MID,
-          "OrderId" => $request->ORDER_ID,
-          "CHECKSUMHASH"=> $request->CHECKSUMHASH,
-          "REQUEST_TYPE"=> $request->REQUEST_TYPE,
-          "CUST_ID"=> $request->CUST_ID,
-          "INDUSTRY_TYPE_ID"=>$request->INDUSTRY_TYPE_ID,
-          "CHANNEL_ID"=> $request->CHANNEL_ID,
-          "TXN_AMOUNT"=> $request->TXN_AMOUNT,
-          "WEBSITE"=> $request->WEBSITE,
-          "CALLBACK_URL"=> $request->CALLBACK_URL,
-          "MOBILE_NO"=> $request->MOBILE_NO,
-          "EMAIL"=> $request->EMAIL
-          ]);
-          $transaction = PaytmWallet::with('receive');
-          return $transaction;
-        $response = $transaction->response(); // To get raw response as array
-        //Check out response parameters sent by paytm here -> http://paywithpaytm.com/developer/paytm_api_doc?target=interpreting-response-sent-by-paytm
-        if($transaction->isSuccessful()){
-          // dd("success");
-        }else if($transaction->isFailed()){
-          // dd("failled");
-        }else if($transaction->isOpen()){
-          // dd("pending");
-        }
-        print_r($transaction->getResponseMessage()); //Get Response Message If Available
-        //get important parameters via public methods
-        // print_r($transaction->getOrderId()); // Get order id
+        $transaction = PaytmWallet::with('receive');
+        $response = $transaction->response(); 
+        $order_id = $transaction->getOrderId();
+        $transaction_update = Transaction::where('payment_id',$order_id)->get()->first();
+        $transaction_id = $transaction->getTransactionId(); // Get transaction id
 
-        print_r($transaction->getTransactionId()); // Get transaction id
+        if($transaction->isSuccessful()){
+          $transaction_update->razorpay_id = $transaction_id;
+          $transaction_update->payment_done = 1;
+          $transaction_update->save();
+          return Redirect::to(url('/success'));
+        }else if($transaction->isFailed()){
+          $transaction_update->razorpay_id = $transaction_id;
+          $transaction_update->save();
+          return Redirect::to(url('/error'));
+        }else if($transaction->isOpen()){
+          return Redirect::to(url('/'));
+        }
     }
+
+    // public function order(Request $request){
+    //   $mid = env('PAYTM_MERCHANT_ID');
+    //   $paytmParams = array();
+    //   $order =strtotime(date('y-m-d')). rand(000000,9999999);
+    //   $paytmParams["body"] = array(
+    //       "requestType"   => "Payment",
+    //       "mid"           => $mid,
+    //       "websiteName"   => "WEBSTAGING",
+    //       "orderId"       => $order,
+    //       "callbackUrl"   => url('/payment/status'),
+    //       "txnAmount"     => array(
+    //           "value"     => $request->amount,
+    //           "currency"  => "INR",
+    //       ),
+    //       "userInfo"      => array(
+    //           "custId"    => auth()->user()->id,
+    //       ),
+    //   );
+      
+    //   /*
+    //   * Generate checksum by parameters we have in body
+    //   * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+    //   */
+    //   $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $mid);
+    //   $paytmParams["head"] = array(
+    //       "signature"    => $checksum,
+    //       "channelId" =>  env('PAYTM_CHANNEL')
+    //   );
+      
+    //   $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
+      
+    //   /* for Staging */
+    //   $url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=".$mid."&orderId=".$order;
+    //   return $url;
+      
+    //   /* for Production */
+    //   // $url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765";
+    //   $ch = curl_init($url);
+    //   curl_setopt($ch, CURLOPT_POST, 1);
+    //   curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    //   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+    //   curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); 
+    //   $response = curl_exec($ch);
+    //   return $response;
+    // }
 }
