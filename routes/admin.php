@@ -24,6 +24,7 @@ Route::group(["middleware" =>"CheckAdmin"],function(){
     Route::get('/withdrawDone/{id}' , [WithdrawController::class ,'withdrawDone']);
     Route::get('/tournamentsHistory' , [AdminShowController::class , 'tournamentsHistory']);
     Route::post('/UpdateTournamentComplete' , [AdminController::class ,'UpdateTournamentComplete']);
+    Route::get('/contact',[AdminShowController::class , 'contact']);
 });
 
 Route::fallback(function(){

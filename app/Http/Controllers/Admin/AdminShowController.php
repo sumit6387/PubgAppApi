@@ -9,6 +9,7 @@ use App\Models\Tournament;
 use App\Models\Transaction;
 use App\Models\Withdraw;
 use App\Models\UserName;
+use App\Models\ContactUs;
 
 class AdminShowController extends Controller
 {
@@ -112,6 +113,21 @@ class AdminShowController extends Controller
             return response()->json([
                 'status' => true,
                 'data' => $data
+            ]);
+        }
+    }
+
+    public function contact(Request $request){
+        $contacts = ContactUs::orderby('id','desc')->take(20)->get();
+        if($contacts->count()){
+            return response()->json([
+                'status' => true,
+                'data' => $contacts
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'msg' => "No Data Found!!"
             ]);
         }
     }
