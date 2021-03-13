@@ -17,7 +17,10 @@ use Validator;
 class UserController extends Controller
 {
     public function user(){
-        return auth()->user();
+        return response()->json([
+            'status' => true,
+            'data' => auth()->user()
+        ]);
     }
 
     public function joinTournament(Request $request){

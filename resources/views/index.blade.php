@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Funlegends - Play More Earn More</title>
+  <title>R-Star - Play More Earn More</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{url('assets/img/favi.png')}}" rel="icon " type="image/png" sizes="72x72">
+  <link href="{{url('public/assets/img/favi.png')}}" rel="icon " type="image/png" sizes="72x72">
   <!--<link href="{{url('public/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">-->
 
 
