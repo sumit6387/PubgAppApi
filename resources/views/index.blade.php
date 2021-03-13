@@ -18,13 +18,13 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{url('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{url('assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
-  <link href="{{url('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-  <link href="{{url('assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-  <link href="{{url('assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
-  <link href="{{url('assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
+  <link href="{{url('public/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url('public/assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
+  <link href="{{url('public/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{url('public/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{url('public/assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
+  <link href="{{url('public/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{url('public/assets/css/style.css')}}" rel="stylesheet">
   <style>
     .btn-1{
         background: #fff;
@@ -73,7 +73,7 @@
           </div>
         </div>
         <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-          <img src="{{url('assets/img/hero-img.png')}}" class="img-fluid" alt="">
+          <img src="{{url('public/assets/img/hero-img.png')}}" class="img-fluid" alt="">
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@
             </div>
           </div>
           <div class="image col-xl-5 d-flex align-items-stretch justify-content-center order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="{{url('assets/img/features.svg')}}" class="img-fluid" alt="">
+            <img src="{{url('public/assets/img/features.svg')}}" class="img-fluid" alt="">
           </div>
         </div>
 
@@ -142,7 +142,7 @@
 
         <div class="row content">
           <div class="col-md-4" data-aos="fade-right">
-            <img src="{{url('assets/img/details-1.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/assets/img/details-1.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-4" data-aos="fade-up">
             <h3>About The App</h3>
@@ -177,7 +177,7 @@
 
         <div class="row content">
           <div class="col-md-4" data-aos="fade-right">
-            <img src="{{url('assets/img/details-3.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/assets/img/details-3.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-5" data-aos="fade-up">
             <h3>Terms And Conditions</h3>
@@ -194,7 +194,7 @@
 
         <div class="row content">
           <div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
-            <img src="{{url('assets/img/details-4.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/assets/img/details-4.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
             <h3>About us</h3>
@@ -222,18 +222,18 @@
         </div>
 
         <div class="owl-carousel gallery-carousel" data-aos="fade-up">
-          <a href="{{url('assets/img/gallery/1.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/1.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/2.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/2.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/3.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/3.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/4.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/4.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/5.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/5.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/6.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/6.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/1.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/1.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/2.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/2.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/3.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/3.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/4.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/4.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/5.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/5.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/6.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/6.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/7.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/7.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/8.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/8.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/9.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/9.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/10.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/10.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/11.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/11.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/12.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/12.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/8.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/8.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/9.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/9.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/10.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/10.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/11.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/11.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/12.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/12.jpg')}}" alt=""></a>
         </div>
 
       </div>
@@ -514,13 +514,13 @@
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{{url('assets/vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{url('assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
-  <script src="{{url('assets/vendor/php-email-form/validate.js')}}"></script>
-  <script src="{{url('assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
-  <script src="{{url('assets/vendor/venobox/venobox.min.js')}}"></script>
-  <script src="{{url('assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{url('public/assets/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url('public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url('public/assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+  <script src="{{url('public/assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="{{url('public/assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{url('public/assets/vendor/venobox/venobox.min.js')}}"></script>
+  <script src="{{url('public/assets/vendor/aos/aos.js')}}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Template Main JS File -->
   <script src="{{url('public/assets/js/main.js')}}"></script>
