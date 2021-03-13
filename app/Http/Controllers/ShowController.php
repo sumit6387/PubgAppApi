@@ -11,8 +11,8 @@ use App\Models\User;
 
 class ShowController extends Controller
 {
-    public function showTournaments($page){
-        $tournaments = Tournament::orderby('tournament_id','desc')->where(['completed'=>0 , 'cancel' => 0])->get();
+    public function showTournaments($type,$page){
+        $tournaments = Tournament::orderby('tournament_id','desc')->where(['completed'=>0 , 'cancel' => 0,'type'=>$type])->get();
         if($tournaments->count()){
             $data = [];
             foreach ($tournaments as $key => $value) {

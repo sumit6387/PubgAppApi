@@ -27,7 +27,7 @@ Route::group(["middleware" => 'auth:sanctum','api'],function(){
 
     Route::post('/addFeedback' , [UserController::class , 'addFeedback']); //title,description
     Route::post('/withdraw',[WithdrawController::class , 'withdraw']); //mode , upi_id,paytm_no,acount_no,ifsc_code,name
-    Route::get('/showtournament/{page}', [ShowController::class , 'showTournaments']);
+    Route::get('/showtournament/{type}/{page}', [ShowController::class , 'showTournaments']);
     Route::get('/allTransactions' , [ShowController::class , 'allTransactions']);
     Route::get('/referAndEarn' , [ShowController::class , 'referAndEarn']);
     Route::post('/tournamentDetail' , [ShowController::class , 'tournamentDetail']); //tournament_id
