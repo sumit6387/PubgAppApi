@@ -69,6 +69,7 @@ class AllFunction{
         }
         $amount = $amount + ($tournament->per_kill * $kill);
         $winn = $winn+($tournament->per_kill * $kill);
+        $users->ptr_reward = $users->ptr_reward+(2*$kill);
         $users->withdrawal_amount = $amount;
         if($kill > 0){
                  $transaction = new Transaction();

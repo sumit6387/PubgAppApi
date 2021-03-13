@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('referal_code');
             $table->string('ref_by')->nullable();
             $table->string('profile_img');
+            $table->integer('ptr_reward')->default(0);
             $table->integer('first_time_payment')->default(0);
             $table->integer('wallet_amount')->default(0);
             $table->integer('withdrawal_amount')->default(0);

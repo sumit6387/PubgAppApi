@@ -177,4 +177,20 @@ class ShowController extends Controller
             ]);
         }
     }
+
+    public function pointTableUser(){
+        $users = User::orderBy('ptr_reward','desc')->take(20)->get();
+        if($users){
+            return response()->json([
+                'status' =>true,
+                'data' => $users
+            ]);
+        }else{
+            return response()->json([
+                'status' =>false,
+                'data' => "No User Found"
+            ]);
+        }
+        
+    }
 }

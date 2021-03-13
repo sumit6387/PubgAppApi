@@ -64,7 +64,7 @@ class AdminShowController extends Controller
                 for ($i=0; $i < count($arr); $i++) { 
                     $user = User::select('name')->where('id',$arr[$i])->get()->first();
                     $data1 = UserName::select('pubg_username','pubg_user_id','user_id')->where(['user_id' => $arr[$i] , 'tournament_id' => $request->tournament_id])->get()->first();
-                    $user->user_id = $data1->user_id;
+                    $user->id = $data1->user_id;
                     $user->pubg_username = $data1->pubg_username;
                     $user->pubg_user_id = $data1->pubg_user_id;
                     array_push($data,$user);
