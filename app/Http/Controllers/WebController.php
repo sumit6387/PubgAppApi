@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\FeedBack;
 use App\Models\ContactUs;
 use App\Models\NewsLetter;
+use Validator;
 class WebController extends Controller
 {
     public function index(){
