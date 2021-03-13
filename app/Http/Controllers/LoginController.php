@@ -14,6 +14,13 @@ class LoginController extends Controller
     public function register(Request $request){
         $valid = Validator::make($request->all(),["name" => "required" , "mobile_no" => "required" , "password" => "required"]);
         if($valid->passes()){
+            $exist = User::where('mobile_no',$request->mobile_no)->get()->first();
+            if($exist){
+                return response()->json([
+                    'status' => false,
+                    'msg' => "You Are Already Registered."
+                ]);
+            }
             $new_user = new User();
             $new_user->name = $request->name;
             $new_user->mobile_no = $request->mobile_no;
