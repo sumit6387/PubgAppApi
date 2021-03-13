@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,6 @@ use App\Http\Controllers\PaymentController;
 |
 */
 
-Route::view('/', 'index');
+Route::get('/', [WebController::class , 'index']);
 Route::get('/order',[PaymentController::class , 'order']);
 Route::post('/payment/status',[PaymentController::class , 'paymentCallback']);

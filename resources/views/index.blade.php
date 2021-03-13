@@ -249,22 +249,22 @@
         </div>
 
         <div class="owl-carousel testimonials-carousel" data-aos="fade-up">
-
+    @foreach($feedbacks as $feed)
           <div class="testimonial-wrap">
             <div class="testimonial-item">
-              <img src="{$feed->img}" style="height: 65px;width: 83px;" class="testimonial-img" alt="">
-              <h3>{$feed->user_name}</h3>
-              <h4>{$feed->title}</h4>
+              <img src="{{$feed->img}}" style="height: 65px;width: 83px;" class="testimonial-img" alt="">
+              <h3>{{$feed->user_name}}</h3>
+              <h4>{{$feed->title}}</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                {$feed->description}
+                {{$feed->description}}
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
           </div>
         </div>
-
       </div>
+    @endforeach
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Pricing Section ======= -->

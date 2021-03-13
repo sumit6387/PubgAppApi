@@ -37,6 +37,7 @@ Route::group(["middleware" => 'auth:sanctum','api'],function(){
     Route::get('/notifications' , [ShowController::class , 'notification']);
     Route::get('/updateSeen' , [ShowController::class , 'updateSeen']);
     Route::get('/pointTableUser' , [ShowController::class , 'pointTableUser']);
+    Route::post('/addFeedback' , [UserController::class , 'addFeedback']); //title,description
 });
 
 Route::fallback(function(){
