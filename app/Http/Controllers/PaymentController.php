@@ -15,11 +15,11 @@ use Validator;
 class PaymentController extends Controller
 {
     public function order(Request $request) {
-        $order_id = Str::random(10);
+        $order_id = Str::random(12);
         $transaction = new Transaction();
-        $transaction->user_id = 1;
-        $transaction->reciept_id = Str::random(12);
-        $transaction->amount = 20;
+        $transaction->user_id = $request->user_id;
+        $transaction->reciept_id = Str::random(10);
+        $transaction->amount = $request->amount;
         $transaction->description = "Adding Money To Your Account.";
         $transaction->payment_id = $order_id;
         $transaction->action = "C";
@@ -44,7 +44,6 @@ class PaymentController extends Controller
         $order_id = $transaction->getOrderId();
         $transaction_update = Transaction::where('payment_id',$order_id)->get()->first();
         $transaction_id = $transaction->getTransactionId(); // Get transaction id
-
         if($transaction->isSuccessful()){
           $transaction_update->razorpay_id = $transaction_id;
           $transaction_update->payment_done = 1;

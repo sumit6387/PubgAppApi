@@ -102,7 +102,7 @@ class AdminShowController extends Controller
         }else{
             return response()->json([
                 'status' => false,
-                'data' => 'No Records'
+                'msg' => 'No Records Found!!'
             ]);
         }
     }
