@@ -108,7 +108,7 @@ class AdminShowController extends Controller
     }
 
     public function tournamentsHistory(){
-        $data = Tournament::where('completed',1)->orwhere('cancel',1)->get();
+        $data = Tournament::orderby('tournament_id','desc')->where('completed',1)->orwhere('cancel',1)->take(20)->get();
         if($data->count() > 0){
             return response()->json([
                 'status' => true,
