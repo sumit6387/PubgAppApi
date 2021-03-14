@@ -17,7 +17,8 @@ use Validator;
 class UserController extends Controller
 {
     public function user(){
-        $user = User::select(['*','profile_img as profile_image'])->where('id',auth()->user()->id)->get();
+        $user = auth()->user();
+        $user->profile_image = $user->profile_img;
         return response()->json([
             'status' => true,
             'data' => $user
