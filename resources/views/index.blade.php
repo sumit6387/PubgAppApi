@@ -221,7 +221,7 @@
         </div>
 
         <div class="owl-carousel gallery-carousel" data-aos="fade-up">
-          <a href="{{url('public/assets/img/gallery/1.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('assets/img/gallery/1.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/1.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/1.jpg')}}" alt=""></a>
           <a href="{{url('assets/img/gallery/2.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/2.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/3.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/3.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/4.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/4.jpg')}}" alt=""></a>
