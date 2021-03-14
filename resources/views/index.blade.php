@@ -51,7 +51,6 @@
           <li class="active"><a href="{{url('/')}}">Home</a></li>
           <li><a href="#features">App Features</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#pricing">Membership</a></li>
           <li><a href="#faq">F.A.Q</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
