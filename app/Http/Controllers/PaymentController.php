@@ -11,6 +11,7 @@ use PaytmWallet;
 use Illuminate\Support\Facades\Redirect;
 // use paytm\paytmchecksum\PaytmChecksum;
 use Validator;
+use App\Functions\AllFunction;
 
 class PaymentController extends Controller
 {
@@ -48,6 +49,22 @@ class PaymentController extends Controller
           $transaction_update->razorpay_id = $transaction_id;
           $transaction_update->payment_done = 1;
           $transaction_update->save();
+          $user_id = $transaction_update->user_id;
+          $transactions = Transaction::where(['user_id'=>$user_id , "paymnent_done"=>1])->get();
+          if($transactions == 1){
+            $user = User::where('id',$user_id)->get()->first();
+            if($user){
+              if($user->ref_by){
+                $users = User::where('referal_code',$user->ref_by)->get()->first();
+                if($users){
+                  $notifi = new AllFunction();
+                  $notifi->sendNotification(array('id' => $users->id , 'title' => "Refered Money Add.","msg" =>"You refered your friend ".$user->name.". So 5rs Added to your Account.","icon"=>"money"));
+                  $users->wallet_amount = $users->wallet_amount + 5;
+                  $users->save();
+                }
+              }
+            }
+          }
           return Redirect::to(url('/success'));
         }else if($transaction->isFailed()){
           $transaction_update->razorpay_id = $transaction_id;

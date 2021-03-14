@@ -34,6 +34,7 @@ class LoginController extends Controller
                 $code = $checkref->referCode($request->ref_by);
                 if($code){
                     $new_user->ref_by = $request->ref_by;
+                    $new_user->wallet_amount = 5;
                 }
             }
             if($new_user->save()){
