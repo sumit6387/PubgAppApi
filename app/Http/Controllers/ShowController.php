@@ -193,4 +193,14 @@ class ShowController extends Controller
         }
         
     }
+
+    public function myWallet(){
+        $money = User::select('users.wallet_amount','users.withdrawal_amount')->where('id' , auth()->user()->id)->get();
+        if($money){
+            return response()->json([
+                'status' => true,
+                'data' => $money
+            ]);
+        }
+    }
 }

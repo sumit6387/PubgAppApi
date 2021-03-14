@@ -19,11 +19,6 @@ Route::group(["middleware" => 'auth:sanctum','api'],function(){
     Route::post('/joinTournament' , [UserController::class , 'joinTournament']); //tournament_id,pubg_username , pubg_userid
 
 
-    // payment Route
-    Route::get('/order',[PaymentController::class , 'order']); //for order payment
-    Route::post('/payment/status',[PaymentController::class , 'paymentCallback']); //for verify payment
-
-
 
     Route::post('/addFeedback' , [UserController::class , 'addFeedback']); //title,description
     Route::post('/withdraw',[WithdrawController::class , 'withdraw']); //mode , upi_id,paytm_no,acount_no,ifsc_code,name
@@ -38,6 +33,8 @@ Route::group(["middleware" => 'auth:sanctum','api'],function(){
     Route::get('/updateSeen' , [ShowController::class , 'updateSeen']);
     Route::get('/pointTableUser' , [ShowController::class , 'pointTableUser']);
     Route::post('/addFeedback' , [UserController::class , 'addFeedback']); //title,description
+    Route::get('/mywallet' , [ShowController::class , 'myWallet']);
+    Route::post('/changePassword' , [UserController::class , 'changePassword']); // current_password,new_password , confirm_password
 });
 
 Route::fallback(function(){
