@@ -19,6 +19,10 @@ Route::group(["middleware" => 'auth:sanctum','api'],function(){
     Route::post('/joinTournament' , [UserController::class , 'joinTournament']); //tournament_id,pubg_username , pubg_userid
 
 
+    // payment route for to add balance
+    Route::post('/payment-request' , [PaymentController::class , 'createPaymentOrder']); //amount
+    Route::post('/payment-complete', [PaymentController::class , 'paymentComplete']); //razorpay_payment_id,razorpay_order_id,razorpay_signature
+
 
     Route::post('/addFeedback' , [UserController::class , 'addFeedback']); //title,description
     Route::post('/withdraw',[WithdrawController::class , 'withdraw']); //mode , upi_id,paytm_no,acount_no,ifsc_code,name

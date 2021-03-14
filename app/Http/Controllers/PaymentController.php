@@ -2,122 +2,146 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
-use PaytmWallet;
-use Illuminate\Support\Facades\Redirect;
-// use paytm\paytmchecksum\PaytmChecksum;
 use Validator;
 use App\Functions\AllFunction;
+use Razorpay\Api\Api;
+use Exception;
 
 class PaymentController extends Controller
 {
-    public function order(Request $request) {
-        $order_id = Str::random(12);
-        $transaction = new Transaction();
-        $transaction->user_id = $request->user_id;
-        $transaction->reciept_id = Str::random(10);
-        $transaction->amount = $request->amount;
-        $transaction->description = "Adding Money To Your Account.";
-        $transaction->payment_id = $order_id;
-        $transaction->action = "C";
-        $transaction->save();
-        $payment = PaytmWallet::with('receive');
-        $payment->prepare([
-          'order' => $order_id, // your order id taken from cart
-          'user' =>$request->user_id, // your user id
-          'mobile_number' => $request->mobile_no, // your customer mobile no
-          'email' => 'utkarshyadav6387@gmail.com', // your user email address
-          'amount' => $request->amount, // amount will be paid in INR.
-          'callback_url' => url('/payment/status') // callback URL
-        ]);
-        return $payment->receive();
-  }
+    private $razorpayId = "rzp_live_V1aim9m5siBEAW";
+    private $razorpayKey = "ekN1fffpTtiJgh4ZgWrfwXGT";
 
-
-    public function paymentCallback(Request $request)    //check status and update in database
-    {   
-        $transaction = PaytmWallet::with('receive');
-        $response = $transaction->response(); 
-        $order_id = $transaction->getOrderId();
-        $transaction_update = Transaction::where('payment_id',$order_id)->get()->first();
-        $transaction_id = $transaction->getTransactionId(); // Get transaction id
-        if($transaction->isSuccessful()){
-          $transaction_update->razorpay_id = $transaction_id;
-          $transaction_update->payment_done = 1;
-          $transaction_update->save();
-          $user_id = $transaction_update->user_id;
-          $transactions = Transaction::where(['user_id'=>$user_id , "paymnent_done"=>1])->get();
-          if($transactions == 1){
-            $user = User::where('id',$user_id)->get()->first();
-            if($user){
-              if($user->ref_by){
-                $users = User::where('referal_code',$user->ref_by)->get()->first();
-                if($users){
-                  $notifi = new AllFunction();
-                  $notifi->sendNotification(array('id' => $users->id , 'title' => "Refered Money Add.","msg" =>"You refered your friend ".$user->name.". So 5rs Added to your Account.","icon"=>"money"));
-                  $users->wallet_amount = $users->wallet_amount + 5;
-                  $users->save();
-                }
+    public function createPaymentOrder(Request $request){
+        $valid = Validator::make($request->all(), ['amount' => 'required']);
+        if($valid->passes()){
+          try{
+              if($request->amount < 10){
+                  return response()->json([
+                      'status' => false,
+                      'msg' => "You can't add less then 10 RS"
+                  ]);
               }
-            }
-          }
-          return Redirect::to(url('/success'));
-        }else if($transaction->isFailed()){
-          $transaction_update->razorpay_id = $transaction_id;
-          $transaction_update->save();
-          return Redirect::to(url('/error'));
-        }else if($transaction->isOpen()){
-          return Redirect::to(url('/'));
+            //   creating the order for money transfer
+                $api = new Api($this->razorpayId, $this->razorpayKey);
+                $reciept_id = Str::random(20);
+                $order = $api->order->create(array(
+                    'receipt' => $reciept_id,
+                    'amount' => $request->amount * 100,
+                    'currency' => 'INR'
+                    )
+                );
+                $newTransaction = new Transaction();
+                $newTransaction->user_id = auth()->user()->id;
+                $newTransaction->reciept_id = $reciept_id;
+                $newTransaction->amount = $request->amount;
+                $newTransaction->description = "Adding Amount";
+                $newTransaction->action = "C";
+                $newTransaction->payment_id = $order['id'];
+                $newTransaction->save();
+
+                return response()->json([
+                    'status' => true,
+                    'razorpayID' => $this->razorpayId,
+                    'orderID' => $order['id'],
+                    'amount' => $request->amount *100,
+                    'userID' => auth()->user()->id,
+                    'contact' => auth()->user()->mobile_no,
+                    'name' => auth()->user()->name
+                ]);
+        }catch(Exception $e){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Something Went Wrong' 
+            ]);
         }
+    }else{
+            return response()->json([
+                'status' => false,
+                'msg' => $valid->errors()->all()
+            ]);
+        }  
     }
 
-    // public function order(Request $request){
-    //   $mid = env('PAYTM_MERCHANT_ID');
-    //   $paytmParams = array();
-    //   $order =strtotime(date('y-m-d')). rand(000000,9999999);
-    //   $paytmParams["body"] = array(
-    //       "requestType"   => "Payment",
-    //       "mid"           => $mid,
-    //       "websiteName"   => "WEBSTAGING",
-    //       "orderId"       => $order,
-    //       "callbackUrl"   => url('/payment/status'),
-    //       "txnAmount"     => array(
-    //           "value"     => $request->amount,
-    //           "currency"  => "INR",
-    //       ),
-    //       "userInfo"      => array(
-    //           "custId"    => auth()->user()->id,
-    //       ),
-    //   );
-      
-    //   /*
-    //   * Generate checksum by parameters we have in body
-    //   * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
-    //   */
-    //   $checksum = PaytmChecksum::generateSignature(json_encode($paytmParams["body"], JSON_UNESCAPED_SLASHES), $mid);
-    //   $paytmParams["head"] = array(
-    //       "signature"    => $checksum,
-    //       "channelId" =>  env('PAYTM_CHANNEL')
-    //   );
-      
-    //   $post_data = json_encode($paytmParams, JSON_UNESCAPED_SLASHES);
-      
-    //   /* for Staging */
-    //   $url = "https://securegw-stage.paytm.in/theia/api/v1/initiateTransaction?mid=".$mid."&orderId=".$order;
-    //   return $url;
-      
-    //   /* for Production */
-    //   // $url = "https://securegw.paytm.in/theia/api/v1/initiateTransaction?mid=YOUR_MID_HERE&orderId=ORDERID_98765";
-    //   $ch = curl_init($url);
-    //   curl_setopt($ch, CURLOPT_POST, 1);
-    //   curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-    //   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-    //   curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); 
-    //   $response = curl_exec($ch);
-    //   return $response;
-    // }
+    public function paymentComplete(Request $request){
+      $valid = Validator::make($request->all(), [
+          'razorpay_payment_id' => 'required',
+          'razorpay_order_id' => 'required',
+          'razorpay_signature' => 'required'
+      ]);
+
+      if($valid->passes()){
+          // verifying the payment is completed or not
+          $completeStatus = $this->verifySignature($request->razorpay_payment_id,$request->razorpay_order_id,$request->razorpay_signature);
+       
+          if($completeStatus){
+              $transaction = Transaction::where('payment_id' , $request->razorpay_order_id)->get()->first();
+              $transaction->payment_done  = 1;
+              $transaction->razorpay_id  = $request->razorpay_payment_id;
+              $transaction->save();
+              $user = User::where('id' , auth()->user()->id)->get()->first();
+              $user->wallet_amount = $user->wallet_amount + $transaction->amount;
+              $user->first_time_payment = 1;
+              $user->save();
+              $notifi = new AllFunction();
+              // sending the notification to the user
+              $notifi->sendNotification(array('id' => auth()->user()->id ,'title' => 'Money Added' , 'msg' => $transaction->amount.'is added to your account','icon'=> 'money'));
+              $noOfTransaction = Transaction::where(['user_id'=>auth()->user()->id])->where('razorpay_id','!=',null)->get();
+              if($noOfTransaction->count() == 0 && $user->ref_by != null){
+                  //adding 50% amount on first transaction of users  this is for refer and earn
+                  $users = User::where('refferal_code',$user->ref_by)->get()->first();
+                  $users->wallet_amount = $users->wallet_amount + ($transaction->amount * 50) / 100;
+                  // sending the notification to the user
+                  $notifi->sendNotification(array('id' => $users->user_id ,'title' => 'Reffering Added' , 'msg' => 'Your '.($transaction->amount * 50 / 100).' money of reffering in your account','icon'=> 'money'));
+                  $newTransaction = new Transaction();
+                  $newTransaction->user_id = $users->user_id;
+                  $newTransaction->reciept_id = Str::random(12);
+                  $newTransaction->amount = ($transaction->amount * 50)/100;
+                  $newTransaction->description = "Referal Friend Added Money You Get 5rs of your friends added money first time";
+                  $newTransaction->action = "C";
+                  $newTransaction->payment_done = 1;
+                  $newTransaction->payment_id = Str::random(20);
+                  $newTransaction->save();
+                  $users->save();
+                  $user_info = User::where('id' , auth()->user()->id)->get()->first();
+                  $user_info->first_time_payment = 1;
+                  $user_info->save();
+
+              }
+
+              return response()->json([
+                  'status' => true,
+                  'msg' => 'Payment Success'
+              ]);
+
+          }else{
+              return response()->json([
+                  'status' => false,
+                  'msg' => 'Something went wrong'
+              ]);
+          }
+      }else{
+          return response()->json([
+              'status' => false,
+              'msg' => $valid->errors()->all()
+          ]);
+      }
+  }
+
+  private function verifySignature($razorpay_payment_id, $razorpay_order_id,$signature){
+      // verifying the payment through this function
+     try{
+      $api = new Api($this->razorpayId, $this->razorpayKey);
+      $attributes  = array('razorpay_signature'  => $signature,  'razorpay_payment_id'  => $razorpay_payment_id ,  'razorpay_order_id' => $razorpay_order_id);
+      $order  = $api->utility->verifyPaymentSignature($attributes);
+      return true;
+    }catch(Exception $e){
+        return false;
+    }
+  }
+    
 }

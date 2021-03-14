@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{url('public/newFavicon.jpg')}}" rel="icon " type="image/png" sizes="72x72">
+  <link href="{{url('public/newFavicon.png')}}" rel="icon " type="image/png" sizes="72x72">
   <!--<link href="{{url('public/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">-->
 
 
@@ -66,14 +66,14 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-          <div>
+          <div style="margin-top: -48%;">
             <h1>Best Tournament Application</h1>
             <h2>Participate or Organize your own tournament and play with your friends and also earn money</h2>
             <a href="{{url('/download/rstars.apk')}}" class="download-btn"><i class="bx bxs-download"></i> Download Now</a>
           </div>
         </div>
         <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-          <img src="{{url('public/assets/img/hero-img.png')}}" class="img-fluid" alt="">
+          <img src="{{url('public/webImg/img3.png')}}" style="height:100%;" class="img-fluid" alt="">
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@
             </div>
           </div>
           <div class="image col-xl-5 d-flex align-items-stretch justify-content-center order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="{{url('public/assets/img/features.svg')}}" class="img-fluid" alt="">
+            <img src="{{url('public/webImg/img7.png')}}" class="img-fluid" alt="">
           </div>
         </div>
 
@@ -142,7 +142,7 @@
 
         <div class="row content">
           <div class="col-md-4" data-aos="fade-right">
-            <img src="{{url('public/assets/img/details-1.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/webImg/img6.png')}}" style="height:103%;" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-4" data-aos="fade-up">
             <h3>About The App</h3>
@@ -162,7 +162,7 @@
 
         <div class="row content">
           <div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
-            <img src="{{url('public/assets/img/details-2.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/webImg/img11.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
             <h3>My Tournament And Reward</h3>
@@ -177,7 +177,7 @@
 
         <div class="row content">
           <div class="col-md-4" data-aos="fade-right">
-            <img src="{{url('public/assets/img/details-3.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/webImg/img4.png')}}" style="width: 117%;height: 100%;margin-top: 25%;" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-5" data-aos="fade-up">
             <h3>Terms And Conditions</h3>
@@ -194,7 +194,7 @@
 
         <div class="row content">
           <div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
-            <img src="{{url('public/assets/img/details-4.png')}}" class="img-fluid" alt="">
+            <img src="{{url('public/webImg/img6.png')}}" style="width: 100%;height: 97%;margin-top:10%" class="img-fluid" alt="">
           </div>
           <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
             <h3>About us</h3>
@@ -222,18 +222,18 @@
         </div>
 
         <div class="owl-carousel gallery-carousel" data-aos="fade-up">
-          <a href="{{url('public/assets/img/gallery/1.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/1.jpg')}}" alt=""></a>
-          <a href="{{url('public/assets/img/gallery/2.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/2.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/1.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('assets/img/gallery/1.jpg')}}" alt=""></a>
+          <a href="{{url('assets/img/gallery/2.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/2.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/3.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/3.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/4.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/4.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/5.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/5.jpg')}}" alt=""></a>
-          <a href="{{url('public/assets/img/gallery/6.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/6.jpg')}}" alt=""></a>
-          <a href="{{url('public/assets/img/gallery/7.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/7.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/6.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('assets/img/gallery/6.jpg')}}" alt=""></a>
+          <a href="{{url('assets/img/gallery/7.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/7.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/8.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/8.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/9.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/9.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/10.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/10.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/11.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/11.jpg')}}" alt=""></a>
-          <a href="{{url('public/assets/img/gallery/12.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/12.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/12.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('assets/img/gallery/12.jpg')}}" alt=""></a>
         </div>
 
       </div>
@@ -262,9 +262,9 @@
               </p>
             </div>
           </div>
+    @endforeach
         </div>
       </div>
-    @endforeach
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
