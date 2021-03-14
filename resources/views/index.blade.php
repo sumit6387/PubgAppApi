@@ -226,7 +226,7 @@
           <a href="{{url('public/assets/img/gallery/3.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/3.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/4.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/4.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/5.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/5.jpg')}}" alt=""></a>
-          <a href="{{url('public/assets/img/gallery/6.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('assets/img/gallery/6.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/6.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/6.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/7.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/7.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/8.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/8.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/9.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/9.jpg')}}" alt=""></a>
