@@ -20,6 +20,10 @@ class PaymentController extends Controller
         $valid = Validator::make($request->all(), ['amount' => 'required']);
         if($valid->passes()){
           try{
+              return response()->json([
+                  'status' => false,
+                  "msg" => "We working on this If You want to add money then contact to 7678137162 mobile No."
+              ]);
               if($request->amount < 10){
                   return response()->json([
                       'status' => false,

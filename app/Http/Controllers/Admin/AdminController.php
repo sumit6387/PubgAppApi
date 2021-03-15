@@ -143,7 +143,6 @@ class AdminController extends Controller
             $result->tournament_id = $req->tournament_id;
             $result->results = json_encode($req->results);
             $winner = $req->results;
-            
             $prize  = new AllFunction();
             foreach ($winner as $key => $value) {
                 //distributing prize
@@ -171,6 +170,37 @@ class AdminController extends Controller
             return response()->json([
                 'status' => false,
                 'msg' => $valid->errors()->all()
+            ]);
+        }
+    }
+
+    public function addmoney(Request $request){
+        $valid = Validator::make($request->all() , ["mobile_no"=>"required" , "amount" => "required"]);
+        if($valid->passes()){
+            if($request->amount < 0){
+                return response()->json([
+                    'status' => false,
+                    'msg' => "Enter Valid Amount."
+                ]);
+            }
+            $user = User::where('mobile_no',$request->mobile_no)->get()->first();
+            if($user){
+                $user->wallet_amount = $user->wallet_amount + $request->amount;
+                $user->save();
+                return response()->json([
+                    'status' => true,
+                    'msg' => "Amount Added To User Account."
+                ]);
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'msg' => "Enter Registered Mobile No."
+                ]);
+            }
+        }else{
+            return response()->json([
+                'status' => false,
+                'mag' => $valid->errors()->all()
             ]);
         }
     }

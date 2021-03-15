@@ -25,6 +25,7 @@ Route::group(["middleware" =>"CheckAdmin"],function(){
     Route::get('/tournamentsHistory' , [AdminShowController::class , 'tournamentsHistory']);
     Route::post('/UpdateTournamentComplete' , [AdminController::class ,'UpdateTournamentComplete']);
     Route::get('/contact',[AdminShowController::class , 'contact']);
+    Route::post('/addmoney',[AdminController::class , "addmoney"]);
 });
 
 Route::fallback(function(){
