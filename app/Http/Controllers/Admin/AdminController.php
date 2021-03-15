@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Functions\AllFunction;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Tournament;
 use App\Models\History;
 use App\Models\User;
@@ -201,6 +202,39 @@ class AdminController extends Controller
             return response()->json([
                 'status' => false,
                 'mag' => $valid->errors()->all()
+            ]);
+        }
+    }
+
+    public function changePassword(Request $request){
+        $valid = Validator::make($request->all(),["new_password" => "required" , "cnf_password" => "required"]);
+        if($valid->passes()){
+            $admin = Admin::where('email',$request->email)->get()->first();
+            if($admin){
+                if($request->new_password == $request->cnf_password){
+                    $admin->password = Hash::make($request->new_password);
+                    if($admin->save()){
+                        return response()->json([
+                            'status' => true,
+                            'msg' => "Password Change Successfully."
+                        ]);
+                    }
+                }else{
+                    return response()->json([
+                        'status' => false,
+                        'msg' => "Enter Both Password Same."
+                    ]);
+                }
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'msg' => "Sommething Went Wrong."
+                ]);
+            }
+        }else{
+            return response()->json([
+                'status' => false,
+                'msg' => $valid->errors()->all()
             ]);
         }
     }

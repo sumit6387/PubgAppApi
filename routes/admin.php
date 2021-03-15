@@ -26,6 +26,7 @@ Route::group(["middleware" =>"CheckAdmin"],function(){
     Route::post('/UpdateTournamentComplete' , [AdminController::class ,'UpdateTournamentComplete']);
     Route::get('/contact',[AdminShowController::class , 'contact']);
     Route::post('/addmoney',[AdminController::class , "addmoney"]);
+    Route::post('/changePassword',[AdminController::class , 'changePassword']);
 });
 
 Route::fallback(function(){
