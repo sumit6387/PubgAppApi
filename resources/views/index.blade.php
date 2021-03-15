@@ -68,7 +68,7 @@
           <div style="margin-top: -48%;">
             <h1>Best Tournament Application</h1>
             <h2>Participate or Organize your own tournament and play with your friends and also earn money</h2>
-            <a href="{{url('/download/rstars.apk')}}" class="download-btn"><i class="bx bxs-download"></i> Download Now</a>
+            <a href="{{url('/download/v1/Rstar.apk')}}" class="download-btn"><i class="bx bxs-download"></i> Download Now</a>
           </div>
         </div>
         <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
