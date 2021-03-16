@@ -13,17 +13,13 @@ use Exception;
 
 class PaymentController extends Controller
 {
-    private $razorpayId = "rzp_test_txbN0f8LP9rELl"; //test keys
-    private $razorpayKey = "icFRh2FYDz6ugBduoCo7G5Wh"; // test keys
+    private $razorpayId = "rzp_live_I2trrAOkwjhXkK"; //test keys
+    private $razorpayKey = "8kBmczPTuvtO8vYjCMqZe8XR"; // test keys
 
     public function createPaymentOrder(Request $request){
         $valid = Validator::make($request->all(), ['amount' => 'required']);
         if($valid->passes()){
           try{
-              return response()->json([
-                  'status' => false,
-                  "msg" => "We working on this If You want to add money then contact to 7678137162 mobile No."
-              ]);
               if($request->amount < 10){
                   return response()->json([
                       'status' => false,
