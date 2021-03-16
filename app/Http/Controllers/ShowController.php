@@ -179,7 +179,7 @@ class ShowController extends Controller
     }
 
     public function pointTableUser(){
-        $users = User::orderBy('ptr_reward','desc')->take(20)->get();
+        $users = User::select(["users.*","users.profile_img as profile_image"])->orderBy('ptr_reward','desc')->take(20)->get();
         if($users){
             return response()->json([
                 'status' =>true,
