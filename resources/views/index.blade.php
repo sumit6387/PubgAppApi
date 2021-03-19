@@ -11,9 +11,7 @@
 
   <!-- Favicons -->
   <link href="{{url('public/newFavicon.png')}}" rel="icon " type="image/png" sizes="72x72">
-  <!--<link href="{{url('public/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">-->
-
-
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -22,8 +20,6 @@
   <link href="{{url('public/assets/vendor/icofont/icofont.min.css')}}" rel="stylesheet">
   <link href="{{url('public/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
   <link href="{{url('public/assets/vendor/owl.carousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-  <link href="{{url('public/assets/vendor/venobox/venobox.css')}}" rel="stylesheet">
-  <link href="{{url('public/assets/vendor/aos/aos.css')}}" rel="stylesheet">
   <link href="{{url('public/assets/css/style.css')}}" rel="stylesheet">
   <style>
     .btn-1{
@@ -222,7 +218,7 @@
 
         <div class="owl-carousel gallery-carousel" data-aos="fade-up">
           <a href="{{url('public/assets/img/gallery/1.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/1.jpg')}}" alt=""></a>
-          <a href="{{url('assets/img/gallery/2.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/2.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/2.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/2.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/3.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/3.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/4.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/4.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/5.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/5.jpg')}}" alt=""></a>
@@ -230,7 +226,8 @@
           <a href="{{url('public/assets/img/gallery/7.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/7.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/8.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/8.jpg')}}" alt=""></a>
           <a href="{{url('public/assets/img/gallery/9.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/9.jpg')}}" alt=""></a>
-          <a href="{{url('public/assets/img/gallery/10.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/10.jpg')}}" alt=""></a>          <a href="{{url('public/assets/img/gallery/11.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/11.jpg')}}" alt=""></a>
+          <a href="{{url('public/assets/img/gallery/10.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/10.jpg')}}" alt=""></a>          
+          <a href="{{url('public/assets/img/gallery/11.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/11.jpg')}}" alt=""></a>
 
           <a href="{{url('public/assets/img/gallery/12.jpg')}}" class="venobox" data-gall="gallery-carousel"><img src="{{url('public/assets/img/gallery/12.jpg')}}" alt=""></a>
         </div>
@@ -476,11 +473,7 @@
   <script src="{{url('public/assets/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{url('public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{url('public/assets/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
-  <script src="{{url('public/assets/vendor/php-email-form/validate.js')}}"></script>
   <script src="{{url('public/assets/vendor/owl.carousel/owl.carousel.min.js')}}"></script>
-  <script src="{{url('public/assets/vendor/venobox/venobox.min.js')}}"></script>
-  <script src="{{url('public/assets/vendor/aos/aos.js')}}"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Template Main JS File -->
   <script src="{{url('public/assets/js/main.js')}}"></script>
 <script>
@@ -490,12 +483,6 @@
             var formData = $(this).serialize();
             $.post(url+"/contact" , formData , function(data , status){
                 if(data.status == true){
-                  swal({
-                      title: "Message Sent!",
-                      text: "Our team will contact you soon!",
-                      icon: "success",
-                      button: "Ok",
-                    });
                     setTimeout(() => {
                       window.location.href = window.location.href;
                     }, 2000);
