@@ -103,7 +103,7 @@ class ShowController extends Controller
         if($data->joined_user != null){
         for ($i=0; $i < sizeof($arr); $i++) { 
             $username = UserName::select(['usernames.pubg_username','users.profile_img as img'])->where(['usernames.user_id' => $arr[$i] , 'usernames.tournament_id' => $id])->join('users','usernames.user_id','=','users.id')->get()->first();
-            $username->name = auth()->user()->name;
+            $username->name = User::where('id',$arr[$i])->get()->first()->name;
             array_push($usernames,$username);
         }
         return response()->json([
